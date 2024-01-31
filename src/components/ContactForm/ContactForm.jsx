@@ -5,8 +5,6 @@ import { addContact } from '../../redux/contactsSlice';
 import { nanoid } from '@reduxjs/toolkit';
 
 export const ContactForm = () => {
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const onSubmitForm = event => {
     event.preventDefault();
@@ -17,30 +15,9 @@ export const ContactForm = () => {
     dispatch(
       addContact({ id: nanoid(), name: name.value, number: number.value })
     );
-    // resetForm();
+
     form.reset();
   };
-
-  // const handleChange = e => {
-  //   const { name, value } = e.target;
-
-  //   switch (name) {
-  //     case 'name':
-  //       setName(value);
-  //       break;
-  //     case 'number':
-  //       setNumber(value);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
-
-  // const resetForm = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
-
   return (
     <form action="" onSubmit={onSubmitForm} className={css.formContact}>
       <label className={css.formContactLable} htmlFor={nanoid()}>
@@ -48,8 +25,6 @@ export const ContactForm = () => {
         <input
           type="text"
           name="name"
-          // value={name}
-          // onChange={handleChange}
           className={css.inputFormContact}
           required
         />
@@ -59,8 +34,6 @@ export const ContactForm = () => {
         <input
           type="tel"
           name="number"
-          // value={number}
-          // onChange={handleChange}
           className={css.inputFormContact}
           required
         />
