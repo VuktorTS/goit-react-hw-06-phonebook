@@ -3,7 +3,7 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import css from './App.module.css';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 const defaultContacts = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -27,25 +27,25 @@ export const App = () => {
     setFilter(e.target.value);
   };
 
-  const addNewContact = (name, number) => {
-    const isInContacts = contacts.some(
-      contact => name.toLowerCase() === contact.name.toLowerCase()
-    );
+  // const addNewContact = (name, number) => {
+  //   const isInContacts = contacts.some(
+  //     contact => name.toLowerCase() === contact.name.toLowerCase()
+  //   );
 
-    if (isInContacts) {
-      alert(`${name} is already in contacts`);
-      return;
-    }
+  //   if (isInContacts) {
+  //     alert(`${name} is already in contacts`);
+  //     return;
+  //   }
 
-    setContacts(prevState => [
-      {
-        id: nanoid(),
-        name,
-        number,
-      },
-      ...prevState,
-    ]);
-  };
+  //   setContacts(prevState => [
+  //     {
+  //       id: nanoid(),
+  //       name,
+  //       number,
+  //     },
+  //     ...prevState,
+  //   ]);
+  // };
 
   const removeContact = contactId => {
     setContacts(prevState => {
@@ -66,7 +66,9 @@ export const App = () => {
   return (
     <div className={css.main}>
       <h1>Phonebook</h1>
-      <ContactForm addNewContact={addNewContact} />
+      <ContactForm
+      // addNewContact={addNewContact}
+      />
       <h2>Contacts</h2>
       {contacts.length > 0 ? (
         <>

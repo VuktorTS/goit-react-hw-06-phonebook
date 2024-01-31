@@ -1,40 +1,45 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import css from './ContactForm.module.css';
-import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice';
+import { nanoid } from '@reduxjs/toolkit';
 
-export const ContactForm = ({ addNewContact }) => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-
+export const ContactForm = () => {
+  // const [name, setName] = useState('');
+  // const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
   const onSubmitForm = event => {
     event.preventDefault();
 
     const form = event.currentTarget;
     const { name, number } = form.elements;
 
-    addNewContact(name.value, number.value);
-    resetForm();
+    dispatch(
+      addContact({ id: nanoid(), name: name.value, number: number.value })
+    );
+    // resetForm();
+    form.reset();
   };
 
-  const handleChange = e => {
-    const { name, value } = e.target;
+  // const handleChange = e => {
+  //   const { name, value } = e.target;
 
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        break;
-    }
-  };
+  //   switch (name) {
+  //     case 'name':
+  //       setName(value);
+  //       break;
+  //     case 'number':
+  //       setNumber(value);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
 
-  const resetForm = () => {
-    setName('');
-    setNumber('');
-  };
+  // const resetForm = () => {
+  //   setName('');
+  //   setNumber('');
+  // };
 
   return (
     <form action="" onSubmit={onSubmitForm} className={css.formContact}>
@@ -43,8 +48,8 @@ export const ContactForm = ({ addNewContact }) => {
         <input
           type="text"
           name="name"
-          value={name}
-          onChange={handleChange}
+          // value={name}
+          // onChange={handleChange}
           className={css.inputFormContact}
           required
         />
@@ -54,8 +59,8 @@ export const ContactForm = ({ addNewContact }) => {
         <input
           type="tel"
           name="number"
-          value={number}
-          onChange={handleChange}
+          // value={number}
+          // onChange={handleChange}
           className={css.inputFormContact}
           required
         />
