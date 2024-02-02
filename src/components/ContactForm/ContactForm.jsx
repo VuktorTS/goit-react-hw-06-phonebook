@@ -12,9 +12,7 @@ export const ContactForm = () => {
     const form = event.currentTarget;
     const { name, number } = form.elements;
 
-    dispatch(
-      addContact({ id: nanoid(), name: name.value, number: number.value })
-    );
+    dispatch(addContact(name.value, number.value));
 
     form.reset();
   };

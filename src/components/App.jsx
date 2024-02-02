@@ -1,10 +1,14 @@
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+
 import css from './App.module.css';
+
 import { useSelector } from 'react-redux';
+import { getContacts } from '../redux/selectors';
+
 export const App = () => {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(getContacts);
 
   return (
     <div className={css.main}>
